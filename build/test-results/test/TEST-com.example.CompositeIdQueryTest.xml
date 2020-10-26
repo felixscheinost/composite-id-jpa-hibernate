@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.CompositeIdQueryTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-26T17:13:33" hostname="McMeeting-Pro-2.fritz.box" time="1.719">
+  <properties/>
+  <testcase name="test" classname="com.example.CompositeIdQueryTest" time="1.719"/>
+  <system-out><![CDATA[Hibernate: drop table if exists CompositeIdDomain CASCADE 
+Hibernate: drop table if exists DomainA CASCADE 
+Hibernate: drop table if exists DomainB CASCADE 
+Hibernate: drop sequence if exists hibernate_sequence
+Hibernate: create sequence hibernate_sequence start with 1 increment by 1
+Hibernate: create table CompositeIdDomain (otherProperty varchar(255), domainB_id bigint not null, domainA_id bigint not null, primary key (domainB_id, domainA_id))
+Hibernate: create table DomainA (id bigint not null, primary key (id))
+Hibernate: create table DomainB (id bigint not null, primary key (id))
+Hibernate: alter table CompositeIdDomain add constraint FK66s2637dj2tx1xxilh0ruccao foreign key (domainB_id) references DomainB
+Hibernate: alter table CompositeIdDomain add constraint FKpa4rubo4k7vf7jo6j6leycky7 foreign key (domainA_id) references DomainA
+Hibernate: call next value for hibernate_sequence
+Hibernate: call next value for hibernate_sequence
+Hibernate: insert into DomainA (id) values (?)
+Hibernate: insert into DomainB (id) values (?)
+Hibernate: insert into CompositeIdDomain (otherProperty, domainB_id, domainA_id) values (?, ?, ?)
+Hibernate: select count(*) as col_0_0_ from DomainA domaina0_
+Hibernate: select count(*) as col_0_0_ from DomainB domainb0_
+Hibernate: select count(*) as col_0_0_ from CompositeIdDomain compositei0_
+Hibernate: select compositei0_.otherProperty as col_0_0_ from CompositeIdDomain compositei0_
+Hibernate: select compositei0_.otherProperty as col_0_0_ from CompositeIdDomain compositei0_ where compositei0_.domainA_id=?
+]]></system-out>
+  <system-err><![CDATA[Okt. 26, 2020 6:13:33 NACHM. org.hibernate.Version logVersion
+INFO: HHH000412: Hibernate ORM core version 5.4.22.Final
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+INFO: HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+WARN: HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001001: Connection properties: {password=****, user=sa}
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+INFO: HHH10001003: Autocommit mode: false
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections <init>
+INFO: HHH000115: Hibernate connection pool size: 1 (min=1)
+Okt. 26, 2020 6:13:33 NACHM. org.hibernate.dialect.Dialect <init>
+INFO: HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+Okt. 26, 2020 6:13:34 NACHM. org.hibernate.mapping.RootClass checkCompositeIdentifier
+WARN: HHH000038: Composite-id class does not override equals(): com.example.CompositeIdDomain
+Okt. 26, 2020 6:13:34 NACHM. org.hibernate.mapping.RootClass checkCompositeIdentifier
+WARN: HHH000039: Composite-id class does not override hashCode(): com.example.CompositeIdDomain
+Okt. 26, 2020 6:13:34 NACHM. org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@1f84ef4a] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+Okt. 26, 2020 6:13:34 NACHM. org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl getIsolatedConnection
+INFO: HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@6e9fe1b9] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+Okt. 26, 2020 6:13:34 NACHM. org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator initiateService
+INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+Okt. 26, 2020 6:13:35 NACHM. org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PoolState stop
+INFO: HHH10001008: Cleaning up connection pool [jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE]
+]]></system-err>
+</testsuite>
